@@ -1,0 +1,27 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated/client"  // generado dentro del backend
+}
+
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Artista {
+  id        Int       @id @default(autoincrement())
+  nombre    String
+  canciones Cancion[]
+}
+
+model Cancion {
+  id           Int      @id @default(autoincrement())
+  titulo       String
+  duracion     String
+  portada      String
+  artistaId    Int
+  artista      Artista  @relation(fields: [artistaId], references: [id])
+  urlMP3       String
+   deezerId     BigInt   @unique
+}

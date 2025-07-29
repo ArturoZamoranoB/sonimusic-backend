@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "Cancion" ALTER COLUMN "deezerId" SET DATA TYPE BIGINT;
